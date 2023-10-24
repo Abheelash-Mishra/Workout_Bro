@@ -17,7 +17,7 @@ const Home = () => {
 			}
 		};
 		const promise = fetchWorkouts(); //Sends undefined back, dunno why the IDE is freaking out when I try to just invoke the func
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<div className={ "home" }>
