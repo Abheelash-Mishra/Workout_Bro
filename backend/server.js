@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const workoutRouter = require('./routes/workouts');
+const userRouter = require('./routes/user');
 
 require('dotenv').config();
 
@@ -25,5 +26,6 @@ app.use(morgan("dev"));
 
 // Routes
 app.use('/api/workouts', workoutRouter);
+app.use('/api/users', userRouter);
 
 
