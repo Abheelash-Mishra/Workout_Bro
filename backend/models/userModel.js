@@ -47,4 +47,23 @@ User.signup = async function (email, password) {
 	return user;
 };
 
+User.login = async function (email, password) {
+	if(!email || !password) {
+		throw new Error('Email and password are required!');
+	}
+
+	const user = await this.findOne({ email });
+
+	if (!user) {
+		throw new Error('No such email exists!');
+	}
+
+	const match = await bcrypt.compare(password, user.password);
+	if(!match){
+		throw new Error('Password is incorrect!');
+	}
+
+	return user;
+};
+
 module.exports = User;
