@@ -26,6 +26,6 @@ app.use(morgan("dev"));
 
 // Routes
 app.use('/api/workouts', workoutRouter);
-app.use('/api/users', userRouter);
+app.use('/api/user', userRouter);
 
 
