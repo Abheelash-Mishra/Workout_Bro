@@ -4,11 +4,11 @@ import { useAuthContext } from "./useAuthContext.js";
 
 export const useSignup = () => {
 	const [error, setError] = useState(null);
-	const [isLoading, setIsLoading] = useState(null)
+	const [isLoading, setIsLoading] = useState(false)
 	const { dispatch } = useAuthContext();
 
 	const signup = async (email, password) => {
-		setIsLoading(null)
+		setIsLoading(true)
 		setError(null)
 
 		const response = await fetch("/api/user/signup", {
@@ -23,7 +23,7 @@ export const useSignup = () => {
 
 		if (!response.ok) {
 			setIsLoading(false)
-			setError(data.message)
+			setError(data.error)
 		}
 		if (response.ok) {
 			// Save login session to local storage
