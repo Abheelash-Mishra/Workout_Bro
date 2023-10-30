@@ -27,7 +27,7 @@ const Signup = () => {
 			<input
 				type="password"
 				onChange={ (e) => setEmail(e.target.value) }
-				value={ email }
+				value={ password }
 			/>
 
 			<button disabled={isLoading}>Sign Up</button>
