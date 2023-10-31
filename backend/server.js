@@ -10,7 +10,7 @@ const app = express();
 const morgan = require('morgan');
 
 app.use(cors({
-    origin: ["https://workout-bro-api.vercel.app"],
+    origin: ["https://workoutbroapi.onrender.com"],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));

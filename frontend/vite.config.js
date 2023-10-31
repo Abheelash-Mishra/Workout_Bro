@@ -6,7 +6,7 @@ export default defineConfig({
 	server: {
 		proxy: {
 			"/api": {
-				target: "https://workout-bro-api.vercel.app",
+				target: "https://workoutbroapi.onrender.com",
 				secure: false,
 			},
 		},
