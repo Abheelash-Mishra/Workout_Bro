@@ -9,7 +9,11 @@ require('dotenv').config();
 const app = express();
 const morgan = require('morgan');
 
-app.use(cors());
+app.use(cors({
+    origin: [],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
 
 const DB_URI = process.env.MONGODB_URI;
 mongoose.connect(DB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
