@@ -10,7 +10,7 @@ const app = express();
 const morgan = require('morgan');
 
 app.use(cors({
-    origin: ["https://workout-bro-ax2u50g6g-abheelash-mishras-projects.vercel.app"],
+    origin: ["https://workout-bro-api.vercel.app"],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
