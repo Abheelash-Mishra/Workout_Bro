@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useWorkoutContext } from "../hooks/useWorkoutContext.js";
+import { useAuthContext } from "../hooks/useAuthContext.js";
 
 const WorkoutForm = () => {
-	const {dispatch} = useWorkoutContext();
+	const { dispatch } = useWorkoutContext();
+	const { user } = useAuthContext();
 
 	const [title, setTitle] = useState("");
 	const [reps, setReps] = useState("");
@@ -13,22 +15,28 @@ const WorkoutForm = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
+		if (!user) {
+			setError("You must be logged in to add a workout");
+			return;
+		}
+
 		const workout = { title, reps, load };
 
 		const response = await fetch("/api/workouts", {
 			method: "POST",
 			body: JSON.stringify(workout),
 			headers: {
-				"Content-Type": "application/json"
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${ user.token }`
 			}
 		})
 		const data = await response.json();
 
-		if(!response.ok){
+		if (!response.ok) {
 			setError(data.error);
 			setEmptyFields(data.emptyFields)
 		}
-		if(response.ok){
+		if (response.ok) {
 			setTitle("");
 			setReps("");
 			setLoad("");
@@ -39,35 +47,35 @@ const WorkoutForm = () => {
 	};
 
 	return (
-		<form className="create" onSubmit={handleSubmit}>
+		<form className="create" onSubmit={ handleSubmit }>
 			<h3>Create A New Workout</h3>
 
 			<label>Exercise Name: </label>
 			<input
 				type="text"
-				onChange={(e => setTitle(e.target.value))}
-				value={title}
-				className={emptyFields.includes("title") ? "error" : ""}
+				onChange={ (e => setTitle(e.target.value)) }
+				value={ title }
+				className={ emptyFields.includes("title") ? "error" : "" }
 			/>
 
 			<label>Load (In Kg): </label>
 			<input
 				type="number"
-				onChange={(e => setLoad(e.target.value))}
-				value={load}
-				className={emptyFields.includes("load") ? "error" : ""}
+				onChange={ (e => setLoad(e.target.value)) }
+				value={ load }
+				className={ emptyFields.includes("load") ? "error" : "" }
 			/>
 
 			<label>Reps: </label>
 			<input
 				type="number"
-				onChange={(e => setReps(e.target.value))}
-				value={reps}
-				className={emptyFields.includes("reps") ? "error" : ""}
+				onChange={ (e => setReps(e.target.value)) }
+				value={ reps }
+				className={ emptyFields.includes("reps") ? "error" : "" }
 			/>
 			<button>Add Workout</button>
 
-			{error && <div className="error">{error}</div>}
+			{ error && <div className="error">{ error }</div> }
 		</form>
 	);
 };
