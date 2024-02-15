@@ -32,4 +32,6 @@ app.use(morgan("dev"));
 app.use('/api/workouts', workoutRouter);
 app.use('/api/user', userRouter);
 
+module.exports = app;
+
 
