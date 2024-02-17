@@ -11,5 +11,15 @@
       "src": "/(.*)",
       "dest": "server.js"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://workout-bro-api.vercel.app"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
   ]
 }
