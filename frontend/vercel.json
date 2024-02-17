@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://workout-bro-api.vercel.app"
+      "destination": "https://workout-bro-api.vercel.app/$1"
     },
     {
       "source": "/(.*)",
