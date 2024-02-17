@@ -42,7 +42,6 @@ const WorkoutForm = () => {
 			setLoad("");
 			setError(null);
 			dispatch({ type: "CREATE_WORKOUT", payload: data });
-			console.log("Workout Added", data);
 		}
 	};
 
