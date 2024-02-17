@@ -7,6 +7,7 @@ export default defineConfig({
 		proxy: {
 			"/api": {
 				target: "https://workout-bro-api.vercel.app",
+				changeOrigin: true,
 				secure: true,
 			},
 		},
