@@ -2,6 +2,13 @@
 
 Workout Bro is a full-stack web application built with the MERN stack that allows users to add their workout routines on to the application. Secured with authentication using JSON Web Tokens (JWTs), users can ensure that their routines stay private to them.
 
+## Demo Video
+
+
+https://github.com/Abheelash-Mishra/Workout_Bro/assets/108271085/f14f5604-1614-40b6-a5dc-9d7fc7f51267
+
+
+
 ## Technical Features
 
 - **React:** The frontend of Workout Bro is built using React, a popular JavaScript library for building user interfaces. React's component-based architecture facilitates the creation of reusable UI components, ensuring a modular and maintainable codebase.
